@@ -1,0 +1,100 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Role {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  users User[]
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  login        String        @unique
+  email        String?       @unique
+  password     String
+  name         String?
+  phone        String?
+  roleId       Int
+  role         Role          @relation(fields: [roleId], references: [id])
+  appointments Appointment[]
+  master       Master?
+  createdAt    DateTime      @default(now())
+}
+
+model Category {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String?
+  services    Service[]
+}
+
+model Master {
+  id             Int           @id @default(autoincrement())
+  name           String
+  specialization String
+  experience     String
+  photo          String?
+  userId         Int?          @unique
+  user           User?         @relation(fields: [userId], references: [id])
+  appointments   Appointment[]
+  services       Service[]
+}
+
+model Service {
+  id           Int           @id @default(autoincrement())
+  name         String
+  description  String?
+  photo        String?
+  price        Float
+  duration     Int
+  categoryId   Int
+  category     Category      @relation(fields: [categoryId], references: [id])
+  masterId     Int?
+  master       Master?       @relation(fields: [masterId], references: [id])
+  appointments Appointment[]
+}
+
+model Status {
+  id           Int           @id @default(autoincrement())
+  name         String        @unique
+  description  String?
+  appointments Appointment[]
+}
+
+model PaymentMethod {
+  id           Int           @id @default(autoincrement())
+  name         String
+  description  String?
+  appointments Appointment[]
+}
+
+model Appointment {
+  id              Int            @id @default(autoincrement())
+  userId          Int
+  user            User           @relation(fields: [userId], references: [id])
+  serviceId       Int
+  service         Service        @relation(fields: [serviceId], references: [id])
+  masterId        Int
+  master          Master         @relation(fields: [masterId], references: [id])
+  statusId        Int
+  status          Status         @relation(fields: [statusId], references: [id])
+  paymentMethodId Int?
+  paymentMethod   PaymentMethod? @relation(fields: [paymentMethodId], references: [id])
+  amount          Float
+  dateTime        DateTime
+  createdAt       DateTime       @default(now())
+}
+
+model Certificate {
+  id        Int      @id @default(autoincrement())
+  code      String   @unique
+  amount    Float
+  isUsed    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
