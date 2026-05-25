@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import api from '../api';
+import api, { SERVER_URL } from '../api';
 
 export default function ServicesPage() {
   const [services,   setServices]   = useState([]);
@@ -111,7 +111,7 @@ export default function ServicesPage() {
                 <div className="h-95 overflow-hidden bg-stone-100">
                   {service.photo ? (
                     <img
-                      src={`http://localhost:5000${service.photo}`}
+                      src={`${SERVER_URL}${service.photo}`}
                       alt={service.name}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />

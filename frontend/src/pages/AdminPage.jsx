@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import api from '../api';
+import api, { SERVER_URL } from '../api';
 
 export default function AdminPage() {
   const { } = useAuth();
@@ -245,7 +245,7 @@ export default function AdminPage() {
                       <div className="flex items-center gap-4">
                         <div className="w-16 h-16 rounded overflow-hidden bg-stone-100 flex-shrink-0">
                           {s.photo ? (
-                            <img src={`http://localhost:5000${s.photo}`} alt={s.name} className="w-full h-full object-cover" />
+                            <img src={`${SERVER_URL}${s.photo}`} alt={s.name} className="w-full h-full object-cover" />
                           ) : (
                             <div className="w-full h-full flex items-center justify-center text-xl">✂️</div>
                           )}
@@ -268,7 +268,7 @@ export default function AdminPage() {
                               formData.append('photo', file);
                               try {
                                 const token = localStorage.getItem('token');
-                                const res = await fetch(``${import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000'}/api/upload`/service/${s.id}`, {
+                                const res = await fetch(`${SERVER_URL}/api/upload/service/${s.id}`, {
                                   method: 'POST', headers: { Authorization: `Bearer ${token}` }, body: formData,
                                 });
                                 const data = await res.json();
@@ -336,7 +336,7 @@ export default function AdminPage() {
                     >
                       <div className="w-20 h-20 rounded-full overflow-hidden bg-stone-100 flex-shrink-0">
                         {m.photo ? (
-                          <img src={`http://localhost:5000${m.photo}`} alt={m.name} className="w-full h-full object-cover" />
+                          <img src={`${SERVER_URL}${m.photo}`} alt={m.name} className="w-full h-full object-cover" />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center text-2xl">👤</div>
                         )}
@@ -358,7 +358,7 @@ export default function AdminPage() {
                               formData.append('photo', file);
                               try {
                                 const token = localStorage.getItem('token');
-                                const res = await fetch(``${import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000'}/api/upload`/master/${m.id}`, {
+                                const res = await fetch(`${SERVER_URL}/api/upload/master/${m.id}`, {
                                   method: 'POST', headers: { Authorization: `Bearer ${token}` }, body: formData,
                                 });
                                 const data = await res.json();

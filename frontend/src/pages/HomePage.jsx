@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import api from '../api';
+import api, { SERVER_URL } from '../api';
 
 export default function HomePage() {
   const [services, setServices] = useState([]);
@@ -153,7 +153,7 @@ export default function HomePage() {
                 <div className="h-85 overflow-hidden bg-stone-100">
                   {service.photo ? (
                     <img
-                      src={`http://localhost:5000${service.photo}`}
+                      src={`${SERVER_URL}${service.photo}`}
                       alt={service.name}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
@@ -217,7 +217,7 @@ export default function HomePage() {
                                 transition-transform duration-300 group-hover:scale-110">
                   {master.photo ? (
                     <img
-                      src={`http://localhost:5000${master.photo}`}
+                      src={`${SERVER_URL}${master.photo}`}
                       alt={master.name}
                       className="w-full h-full object-cover"
                     />
