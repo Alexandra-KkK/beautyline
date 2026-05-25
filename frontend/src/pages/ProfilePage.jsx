@@ -39,7 +39,44 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-16">
+    <div className="relative overflow-hidden">
+      {/* Декоративные жёлтые элементы по бокам — в тон сайта (#ca8a04 = yellow-600) */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden lg:block">
+        {/* Левая сторона */}
+        <div style={{
+          position: 'absolute', left: '-90px', top: '120px',
+          width: '260px', height: '260px',
+          borderRadius: '50%', border: '4px solid #ca8a04', opacity: 0.18,
+        }} />
+        <div style={{
+          position: 'absolute', left: '40px', top: '420px',
+          width: '120px', height: '120px',
+          borderRadius: '50%', border: '2px solid #ca8a04', opacity: 0.25,
+        }} />
+        <div style={{
+          position: 'absolute', left: '-40px', bottom: '120px',
+          width: '180px', height: '180px',
+          borderRadius: '50%', border: '3px solid #ca8a04', opacity: 0.15,
+        }} />
+        {/* Правая сторона */}
+        <div style={{
+          position: 'absolute', right: '-90px', top: '180px',
+          width: '280px', height: '280px',
+          borderRadius: '50%', border: '5px solid #ca8a04', opacity: 0.18,
+        }} />
+        <div style={{
+          position: 'absolute', right: '60px', top: '500px',
+          width: '90px', height: '90px',
+          borderRadius: '50%', border: '2px solid #ca8a04', opacity: 0.3,
+        }} />
+        <div style={{
+          position: 'absolute', right: '-30px', bottom: '160px',
+          width: '200px', height: '200px',
+          borderRadius: '50%', border: '3px solid #ca8a04', opacity: 0.15,
+        }} />
+      </div>
+
+      <div className="relative max-w-4xl mx-auto px-6 py-16">
       <motion.div
         className="flex items-center justify-between mb-12"
         initial={{ opacity: 0, y: -20 }}
@@ -88,7 +125,7 @@ export default function ProfilePage() {
       </motion.h2>
 
       {loading ? (
-        <div className="space-y-4">
+        <div className="space-y-6">
           {[...Array(3)].map((_, i) => (
             <div key={i} className="border border-gray-100 p-6 animate-pulse">
               <div className="h-4 bg-gray-100 rounded w-1/3 mb-3"></div>
@@ -111,7 +148,7 @@ export default function ProfilePage() {
         </motion.div>
       ) : (
         <AnimatePresence>
-          <div className="space-y-4">
+          <div className="space-y-6">
             {appointments.map((appointment, i) => (
               <motion.div
                 key={appointment.id}
@@ -153,6 +190,7 @@ export default function ProfilePage() {
           </div>
         </AnimatePresence>
       )}
+      </div>
     </div>
   );
 }

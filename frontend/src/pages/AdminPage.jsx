@@ -107,7 +107,44 @@ export default function AdminPage() {
   ];
 
   return (
-    <div className="max-w-8xl mx-auto px-6 py-16">
+    <div className="relative overflow-hidden bg-gray-50 min-h-screen">
+      {/* Декоративные жёлтые круги по бокам — в тон сайта */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden lg:block">
+        {/* Левая сторона */}
+        <div style={{
+          position: 'absolute', left: '-90px', top: '120px',
+          width: '260px', height: '260px',
+          borderRadius: '50%', border: '4px solid #ca8a04', opacity: 0.18,
+        }} />
+        <div style={{
+          position: 'absolute', left: '40px', top: '480px',
+          width: '120px', height: '120px',
+          borderRadius: '50%', border: '2px solid #ca8a04', opacity: 0.25,
+        }} />
+        <div style={{
+          position: 'absolute', left: '-40px', bottom: '120px',
+          width: '180px', height: '180px',
+          borderRadius: '50%', border: '3px solid #ca8a04', opacity: 0.15,
+        }} />
+        {/* Правая сторона */}
+        <div style={{
+          position: 'absolute', right: '-90px', top: '180px',
+          width: '280px', height: '280px',
+          borderRadius: '50%', border: '5px solid #ca8a04', opacity: 0.18,
+        }} />
+        <div style={{
+          position: 'absolute', right: '60px', top: '560px',
+          width: '90px', height: '90px',
+          borderRadius: '50%', border: '2px solid #ca8a04', opacity: 0.3,
+        }} />
+        <div style={{
+          position: 'absolute', right: '-30px', bottom: '160px',
+          width: '200px', height: '200px',
+          borderRadius: '50%', border: '3px solid #ca8a04', opacity: 0.15,
+        }} />
+      </div>
+
+      <div className="relative max-w-8xl mx-auto px-10 py-16 bg-white border-x border-yellow-100">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -447,6 +484,7 @@ export default function AdminPage() {
           </motion.div>
         </AnimatePresence>
       )}
+      </div>
     </div>
   );
 }

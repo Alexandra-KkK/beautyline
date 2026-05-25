@@ -82,14 +82,23 @@ async function main() {
     ],
   });
   
-await prisma.certificate.createMany({
-    data: [
-      { code: 'BEAUTY-1000', amount: 1000 },
-      { code: 'BEAUTY-2000', amount: 2000 },
-      { code: 'BEAUTY-3000', amount: 3000 },
-      { code: 'BEAUTY-5000', amount: 5000 },
-    ],
-  });
+try {
+    await prisma.certificate.createMany({
+      data: [
+        { code: 'BEAUTY-300',  amount: 300  },
+        { code: 'BEAUTY-500',  amount: 500  },
+        { code: 'BEAUTY-700',  amount: 700  },
+        { code: 'BEAUTY-1000', amount: 1000 },
+        { code: 'BEAUTY-1500', amount: 1500 },
+        { code: 'BEAUTY-2000', amount: 2000 },
+        { code: 'BEAUTY-3000', amount: 3000 },
+        { code: 'BEAUTY-5000', amount: 5000 },
+      ],
+    });
+  } catch (e) {
+    console.log('⚠️ Сертификаты уже есть, пропускаем');
+  }
+
   console.log('✅ База данных успешно заполнена!');
 }
 

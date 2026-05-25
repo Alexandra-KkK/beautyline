@@ -42,7 +42,7 @@ export default function HomePage() {
             Салон красоты премиум класса
           </motion.p>
           <motion.h1
-            className="text-6xl md:text-8xl font-light leading-none mb-8"
+            className="text-6xl md:text-8xl font-light leading-none mb-14"
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
           >
@@ -50,7 +50,7 @@ export default function HomePage() {
             <span className="text-yellow-500">LINE</span>
           </motion.h1>
           <motion.p
-            className="text-gray-400 text-lg max-w-md mb-10 leading-relaxed"
+            className="text-gray-400 text-lg max-w-md mb-14 leading-relaxed"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.35 }}
           >
@@ -62,14 +62,14 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.55 }}
           >
             <Link to="/booking"
-              className="bg-yellow-600 text-white px-8 py-4 text-sm tracking-widest uppercase
+              className="bg-yellow-600 text-white px-12 py-4 text-sm tracking-widest uppercase
                          hover:bg-yellow-500 transition-all duration-300
                          hover:scale-105 hover:shadow-lg hover:shadow-yellow-900/40 active:scale-95"
             >
               Записаться
             </Link>
             <Link to="/services"
-              className="border border-white text-white px-8 py-4 text-sm tracking-widest uppercase
+              className="border border-white text-white px-12 py-4 text-sm tracking-widest uppercase
                          hover:bg-white hover:text-black transition-all duration-300
                          hover:scale-105 active:scale-95"
             >
@@ -94,7 +94,7 @@ export default function HomePage() {
       </section>
 
       {/* Преимущества */}
-      <section id="why-us" className="py-20 bg-stone-50">
+      <section id="why-us" className="pt-32 pb-20 bg-stone-50">
         <div className="max-w-8xl mx-auto px-6">
           <motion.h2
             className="text-3xl font-light tracking-wide text-center mb-16"
@@ -127,7 +127,7 @@ export default function HomePage() {
       </section>
 
       {/* Популярные услуги */}
-      <section className="py-20">
+      <section className="pt-32 pb-20">
         <div className="max-w-8xl mx-auto px-6">
           <motion.h2
             className="text-3xl font-light tracking-wide text-center mb-16"
@@ -193,7 +193,7 @@ export default function HomePage() {
       </section>
 
       {/* Мастера */}
-      <section className="py-20 bg-stone-50">
+      <section className="pt-32 pb-20 bg-stone-50">
         <div className="max-w-8xl mx-auto px-6">
           <motion.h2
             className="text-3xl font-light tracking-wide text-center mb-16"
