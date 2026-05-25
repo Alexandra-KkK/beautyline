@@ -268,7 +268,7 @@ export default function AdminPage() {
                               formData.append('photo', file);
                               try {
                                 const token = localStorage.getItem('token');
-                                const res = await fetch(`http://localhost:5000/api/upload/service/${s.id}`, {
+                                const res = await fetch(``${import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000'}/api/upload`/service/${s.id}`, {
                                   method: 'POST', headers: { Authorization: `Bearer ${token}` }, body: formData,
                                 });
                                 const data = await res.json();
@@ -358,7 +358,7 @@ export default function AdminPage() {
                               formData.append('photo', file);
                               try {
                                 const token = localStorage.getItem('token');
-                                const res = await fetch(`http://localhost:5000/api/upload/master/${m.id}`, {
+                                const res = await fetch(``${import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000'}/api/upload`/master/${m.id}`, {
                                   method: 'POST', headers: { Authorization: `Bearer ${token}` }, body: formData,
                                 });
                                 const data = await res.json();
